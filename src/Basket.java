@@ -13,10 +13,10 @@ public class Basket {
         this.products = products;
         this.prices = prices;
         this.selected = selected;
-        loadFromTxtFile();
+
     }
 
-    public static Basket loadFromTxtFile() throws IOException {
+    public static void loadFromTxtFile() throws IOException {
         File basket = new File("basket.txt");
         if (basket.exists()) {
             try (FileReader rider = new FileReader(basket)) {
@@ -57,7 +57,6 @@ public class Basket {
             basket.createNewFile();
         }
 
-        return null;
     }
 
     public int[] addToCart(int productNum, int amount) {
