@@ -9,10 +9,9 @@ public class Main {
         String products[] = {"chees", "bread"};
         double prices[] = {3.5, 15};
         int selected[] = new int[products.length];
-        Basket myBasket = new Basket(products, prices,selected);
-        //myBasket.loadFromTxtFile();
+        Basket myBasket = new Basket(products, prices, selected);
 
-        System.out.println("List of buyable goods:");
+        System.out.println("Products for sale:");
         for (int i = 0; i < products.length; i++) {
             System.out.println(i + 1 + " " + products[i] + "  " + prices[i] + " $/pie");
         }
@@ -46,7 +45,6 @@ public class Main {
                     System.out.println("Нельзя выбрать такое количество товара! ");
                     continue;
                 }
-                File textFile = new File("basket.txt");
                 myBasket.addToCart(currentProduct, currentQuan);
                 myBasket.saveTxt();
             } else {
@@ -55,8 +53,6 @@ public class Main {
             }
 
         }
-      //  Basket myBasket = new Basket(products, prices,selected);
-      //  myBasket.addToCart(0, 5);
-      //  myBasket.printCart();
+
     }
 }

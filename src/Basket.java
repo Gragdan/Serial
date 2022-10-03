@@ -54,22 +54,11 @@ public class Basket {
 
             }
         } else {
-            System.out.println("xui");
             basket.createNewFile();
         }
 
         return null;
     }
-
-    public static String removeNumeric(String str) {
-        return str.chars()
-                .filter(ch -> Character.isDefined(ch))
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint,
-                        StringBuilder::append)
-                .toString();
-
-    }
-
 
     public int[] addToCart(int productNum, int amount) {
         selected[productNum - 1] = selected[productNum - 1] + amount;
@@ -89,7 +78,6 @@ public class Basket {
     public void saveTxt() throws IOException {
         try (FileWriter writer = new FileWriter("basket.txt", false)) {
             writer.write(Arrays.toString(selected));
-         //   System.out.println(Arrays.toString(selected));
            // System.out.println("writed!!!");
         } catch (IOException ex) {
 
@@ -98,5 +86,4 @@ public class Basket {
     }
 }
 
-//
-//
+
