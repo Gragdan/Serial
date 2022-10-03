@@ -78,7 +78,8 @@ public class Basket {
     public void saveTxt() throws IOException {
         try (FileWriter writer = new FileWriter("basket.txt", false)) {
             writer.write(Arrays.toString(selected));
-           // System.out.println("writed!!!");
+            writer.flush();
+            // System.out.println("writed!!!");
         } catch (IOException ex) {
 
             System.out.println(ex.getMessage());
