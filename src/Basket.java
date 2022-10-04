@@ -30,22 +30,27 @@ public class Basket implements Serializable {
 
 
     public static Basket loadFromBinFile(File binFile) throws IOException {
-        try (FileInputStream fis = new FileInputStream(binFile);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            selected = (int[]) ois.readObject();
-            System.out.println("Your cart:");
-            int sum = 0;
-            for (int i = 0; i < selected.length; i++) {
-                sum = sum + selected[i];
-                if (selected[i] > 0) {
-                    System.out.println(products[i] + " " + selected[i]);
+        if (binFile.exists()) {
+            try (FileInputStream fis = new FileInputStream(binFile);
+                 ObjectInputStream ois = new ObjectInputStream(fis)) {
+                selected = (int[]) ois.readObject();
+                System.out.println("Your cart:");
+                int sum = 0;
+                for (int i = 0; i < selected.length; i++) {
+                    sum = sum + selected[i];
+                    if (selected[i] > 0) {
+                        System.out.println(products[i] + " " + selected[i]);
+                    }
                 }
+                if (sum <= 0) {
+                    System.out.println("  is empty :(");
+                }
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
-            if(sum <= 0){
-                System.out.println("  is empty :(");
-            }
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+
+        }else {
+            binFile.createNewFile();
         }
         return null;
     }
