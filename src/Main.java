@@ -11,7 +11,9 @@ public class Main {
         int selected[] = new int[products.length];
         Basket myBasket = new Basket(products, prices, selected);
         File file = new File("basket.txt");
-        myBasket.loadFromTxtFile(file);
+        File binFile = new File("basket.bin");
+        myBasket.loadFromBinFile(binFile);
+     //   myBasket.loadFromTxtFile(file);
         System.out.println("Products for sale:");
         for (int i = 0; i < products.length; i++) {
             System.out.println(i + 1 + " " + products[i] + "  " + prices[i] + " $/pie");
@@ -47,7 +49,8 @@ public class Main {
                     continue;
                 }
                 myBasket.addToCart(currentProduct, currentQuan);
-                myBasket.saveTxt();
+                // myBasket.saveTxt();
+                myBasket.saveBin(binFile);
             } else {
                 System.out.println("Введено неверное количество чисел! ");
                 continue;
