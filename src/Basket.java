@@ -7,7 +7,6 @@ public class Basket {
     private static String[] products;
     private double[] prices;
     private static int[] selected;
-    //private static int[] fromLoad;
 
     public Basket(String[] products, double[] prices, int[] selected) throws IOException {
         this.products = products;
@@ -16,10 +15,10 @@ public class Basket {
 
     }
 
-    public static void loadFromTxtFile() throws IOException {
-        File basket = new File("basket.txt");
-        if (basket.exists()) {
-            try (FileReader rider = new FileReader(basket)) {
+    public static Basket  loadFromTxtFile( File file) throws IOException {
+
+        if (file.exists()) {
+            try (FileReader rider = new FileReader(file)) {
                 BufferedReader stringReader = new BufferedReader(rider);
                 String line = stringReader.readLine();
                 if (line != null) {
@@ -54,9 +53,9 @@ public class Basket {
 
             }
         } else {
-            basket.createNewFile();
+            file.createNewFile();
         }
-
+return null;
     }
 
     public int[] addToCart(int productNum, int amount) {

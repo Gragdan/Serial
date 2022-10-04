@@ -10,7 +10,8 @@ public class Main {
         double prices[] = {3.5, 15};
         int selected[] = new int[products.length];
         Basket myBasket = new Basket(products, prices, selected);
-        myBasket.loadFromTxtFile();
+        File file = new File("basket.txt");
+        myBasket.loadFromTxtFile(file);
         System.out.println("Products for sale:");
         for (int i = 0; i < products.length; i++) {
             System.out.println(i + 1 + " " + products[i] + "  " + prices[i] + " $/pie");
