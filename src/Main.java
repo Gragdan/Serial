@@ -47,7 +47,7 @@ public class Main {
                     continue;
                 }
                 myBasket.addToCart(currentProduct, currentQuan);
-                myBasket.saveTxt();
+                myBasket.saveTxt(file);
             } else {
                 System.out.println("Введено неверное количество чисел! ");
                 continue;

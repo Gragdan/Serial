@@ -73,8 +73,8 @@ return null;
 
     }
 
-    public void saveTxt() throws IOException {
-        try (FileWriter writer = new FileWriter("basket.txt", false)) {
+    public void saveTxt(File file) throws IOException {
+        try (FileWriter writer = new FileWriter(file, false)) {
             writer.write(Arrays.toString(selected));
             writer.flush();
             // System.out.println("writed!!!");
