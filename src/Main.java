@@ -4,17 +4,20 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
         String[] products = {"cheese", "bread"};
         double[] prices = {12.5, 4};
-        File file = new File("basket.txt");
+        File txtFile = new File("basket.txt");
+      //  File binFile = new File("basket.bin");
         //Basket myBasket = new Basket(products,prices);
         Basket myBasket = null;
-        if (file.exists()) {
-            myBasket = Basket.loadFromTxtFile(file);
+        if (txtFile.exists()) {
+         //   myBasket = Basket.loadFromBinFile(binFile);
+            myBasket = Basket.loadFromTxtFile(txtFile);
         } else {
-            file.createNewFile();
+         //   binFile.createNewFile();
+            txtFile.createNewFile();
         }
         myBasket.printCart();
         System.out.println("Products for sale:");
@@ -52,7 +55,7 @@ public class Main {
                     continue;
                 }
                 myBasket.addToCart(currentProduct, currentQuan);
-                myBasket.saveTxt(file);
+                myBasket.saveTxt(txtFile);
             } else {
                 System.out.println("Введено неверное количество чисел! ");
                 continue;
